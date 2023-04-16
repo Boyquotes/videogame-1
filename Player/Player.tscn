@@ -1,18 +1,59 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://chvtafhbm6ooq"]
 
-[ext_resource type="Texture2D" uid="uid://dhutxqf6bwg61" path="res://Player/Idle (1).png" id="1_i1mc2"]
+[ext_resource type="Texture2D" uid="uid://dsaq7gm3crowe" path="res://Player/Run (1).png" id="1_4vrsd"]
+[ext_resource type="Texture2D" uid="uid://daptpxd7dw2fw" path="res://Player/Run (2).png" id="2_r2njo"]
+[ext_resource type="Texture2D" uid="uid://dfwuyoa02wrn1" path="res://Player/Run (3).png" id="3_ata77"]
+[ext_resource type="Texture2D" uid="uid://c35kabv1ssa4t" path="res://Player/Run (4).png" id="4_0fa0s"]
+[ext_resource type="Texture2D" uid="uid://dc2k3sehoef8" path="res://Player/Run (5).png" id="5_n4cmx"]
+[ext_resource type="Texture2D" uid="uid://c8gl5kvkj53wj" path="res://Player/Run (6).png" id="6_v77xa"]
+[ext_resource type="Texture2D" uid="uid://bv34yymgk4sol" path="res://Player/Run (7).png" id="7_6q4qy"]
+[ext_resource type="Texture2D" uid="uid://bebnjj0kdn1fk" path="res://Player/Run (8).png" id="8_afwuk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uh5bm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4vrsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r2njo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ata77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0fa0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n4cmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v77xa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6q4qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_afwuk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cdsu"]
-radius = 22.0
-height = 102.0
+radius = 136.0
+height = 488.0
 
 [node name="Robot" type="RigidBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(142, 904)
-scale = Vector2(0.219425, 0.219425)
-texture = ExtResource("1_i1mc2")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_uh5bm")
+animation = &"run"
+autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(139, 906)
+position = Vector2(0, 4)
+scale = Vector2(0.25, 0.25)
 shape = SubResource("CapsuleShape2D_8cdsu")

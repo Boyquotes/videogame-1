@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cs5eraok6sm2t"]
 
-[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1_kblmq"]
+[ext_resource type="PackedScene" uid="uid://chvtafhbm6ooq" path="res://Player/Player.tscn" id="1_kblmq"]
 [ext_resource type="PackedScene" uid="uid://bxtiase0bs3ox" path="res://Environment/LeftPlatform.tscn" id="3_lc7lu"]
 [ext_resource type="PackedScene" uid="uid://be1dfbdb8h75n" path="res://Environment/MiddlePlatform.tscn" id="4_w0hu8"]
 [ext_resource type="PackedScene" uid="uid://v2ltqvwsmjxg" path="res://Environment/RightPlatform.tscn" id="5_cjmy3"]
@@ -15,7 +15,7 @@
 anchor_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("1_kblmq")]
-position = Vector2(-3, -99)
+position = Vector2(256, 576)
 
 [node name="Acid" parent="." instance=ExtResource("6_sgc1r")]
 
