@@ -4,22 +4,22 @@ extends RigidBody2D
 @onready var _ground_raycast = $GroundRaycast
 
 var is_running: bool = true
-var is_jumping: bool = false
+var is_grounded: bool = false
 
 func _ready():
 	pass
 
 
 func _process(delta):
-	is_jumping = not _ground_raycast.is_colliding()
+	is_grounded = _ground_raycast.is_colliding()
 
-	if not is_jumping:
+	if is_grounded:
 		is_running = true
 		_animated_sprite.play("run")
 	else:
 		_animated_sprite.play("jump")
 	
-	if Input.is_action_just_pressed("jump") and not is_jumping:
+	if Input.is_action_just_pressed("jump") and is_grounded:
 		apply_impulse(Vector2(0, -400))
 
 
