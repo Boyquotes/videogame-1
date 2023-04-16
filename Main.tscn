@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs5eraok6sm2t"]
+[gd_scene load_steps=8 format=3 uid="uid://cs5eraok6sm2t"]
 
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
 [ext_resource type="PackedScene" uid="uid://0src03gjkkql" path="res://Environment/TriplePlatform.tscn" id="5_uf5rt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://baa32sms6661" path="res://Environment/ScrollingSpaceBackground.tscn" id="6_ej2eg"]
 [ext_resource type="PackedScene" uid="uid://bxy7t08qvqen0" path="res://Environment/Acid.tscn" id="6_sgc1r"]
 [ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
+[ext_resource type="PackedScene" uid="uid://dear6dm664d45" path="res://Environment/DoublePlatform.tscn" id="7_bf1yi"]
 
 [node name="Main" type="Node2D"]
 
@@ -25,11 +26,46 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("6_2iw8q")
 
 [node name="TriplePlatform2" parent="." instance=ExtResource("5_uf5rt")]
-position = Vector2(928, 928)
+position = Vector2(960, 928)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="TriplePlatform3" parent="." instance=ExtResource("5_uf5rt")]
+position = Vector2(2368, 960)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_2iw8q")
 
 [node name="SinglePlatform" parent="." instance=ExtResource("6_vngn5")]
 position = Vector2(608, 832)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="SinglePlatform2" parent="." instance=ExtResource("6_vngn5")]
+position = Vector2(1408, 864)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="SinglePlatform3" parent="." instance=ExtResource("6_vngn5")]
+position = Vector2(1632, 800)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="SinglePlatform5" parent="." instance=ExtResource("6_vngn5")]
+position = Vector2(2848, 928)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="SinglePlatform6" parent="." instance=ExtResource("6_vngn5")]
+position = Vector2(3424, 800)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="DoublePlatform" parent="." instance=ExtResource("7_bf1yi")]
+position = Vector2(1984, 896)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="DoublePlatform2" parent="." instance=ExtResource("7_bf1yi")]
+position = Vector2(3072, 864)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_2iw8q")
