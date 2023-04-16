@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://is7gdquuk0m4"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dhutxqf6bwg61" path="res://Robot/Idle (1).png" id="1_i1mc2"]
+[ext_resource type="Texture2D" uid="uid://dhutxqf6bwg61" path="res://Player/Idle (1).png" id="1_i1mc2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cdsu"]
 radius = 22.0

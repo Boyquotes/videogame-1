@@ -1,15 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://dix6uk1xanw0h"]
+[gd_scene load_steps=9 format=3 uid="uid://cs5eraok6sm2t"]
 
-[ext_resource type="PackedScene" uid="uid://is7gdquuk0m4" path="res://Robot/Robot.tscn" id="1_kblmq"]
+[ext_resource type="Texture2D" uid="uid://c076uxerpe6q0" path="res://Environment/space_background.png" id="1_cv5tv"]
+[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1_kblmq"]
+[ext_resource type="Script" path="res://Environment/SpaceBackground.gd" id="2_i3hds"]
 [ext_resource type="Texture2D" uid="uid://b3quam7htr0ca" path="res://Environment/Acid (1).png" id="2_ksi14"]
+[ext_resource type="Texture2D" uid="uid://l3dl64wcegv8" path="res://Environment/space_background_2.png" id="2_x3cjr"]
 [ext_resource type="PackedScene" uid="uid://bxtiase0bs3ox" path="res://Environment/LeftPlatform.tscn" id="3_lc7lu"]
 [ext_resource type="PackedScene" uid="uid://be1dfbdb8h75n" path="res://Environment/MiddlePlatform.tscn" id="4_w0hu8"]
 [ext_resource type="PackedScene" uid="uid://v2ltqvwsmjxg" path="res://Environment/RightPlatform.tscn" id="5_cjmy3"]
 
 [node name="Main" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_kblmq")]
-position = Vector2(0, -256)
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+texture = ExtResource("1_cv5tv")
+centered = false
+script = ExtResource("2_i3hds")
+
+[node name="SpaceBackground2" type="Sprite2D" parent="."]
+position = Vector2(1920, 0)
+texture = ExtResource("2_x3cjr")
+centered = false
+script = ExtResource("2_i3hds")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player" parent="." instance=ExtResource("1_kblmq")]
+position = Vector2(-3, -99)
 
 [node name="Acid(1)" type="Sprite2D" parent="."]
 position = Vector2(128, 1024)
