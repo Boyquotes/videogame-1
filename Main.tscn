@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs5eraok6sm2t"]
+[gd_scene load_steps=7 format=3 uid="uid://cs5eraok6sm2t"]
 
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
 [ext_resource type="PackedScene" uid="uid://0src03gjkkql" path="res://Environment/TriplePlatform.tscn" id="5_uf5rt"]
 [ext_resource type="Script" path="res://Environment/Scroll.gd" id="6_2iw8q"]
 [ext_resource type="PackedScene" uid="uid://baa32sms6661" path="res://Environment/ScrollingSpaceBackground.tscn" id="6_ej2eg"]
 [ext_resource type="PackedScene" uid="uid://bxy7t08qvqen0" path="res://Environment/Acid.tscn" id="6_sgc1r"]
+[ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,16 +15,21 @@
 anchor_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("1_kblmq")]
-position = Vector2(128, 896)
+position = Vector2(128, 832)
 
 [node name="Acid" parent="." instance=ExtResource("6_sgc1r")]
 
 [node name="TriplePlatform" parent="." instance=ExtResource("5_uf5rt")]
-position = Vector2(96, 960)
+position = Vector2(96, 896)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_2iw8q")
 
 [node name="TriplePlatform2" parent="." instance=ExtResource("5_uf5rt")]
-position = Vector2(640, 960)
+position = Vector2(928, 928)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_2iw8q")
+
+[node name="SinglePlatform" parent="." instance=ExtResource("6_vngn5")]
+position = Vector2(608, 832)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_2iw8q")
