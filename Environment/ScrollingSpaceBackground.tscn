@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://baa32sms6661"]
+
+[ext_resource type="Texture2D" uid="uid://c076uxerpe6q0" path="res://Environment/space_background.png" id="1_67w4a"]
+[ext_resource type="Script" path="res://Environment/SpaceBackground.gd" id="2_hui22"]
+[ext_resource type="Texture2D" uid="uid://l3dl64wcegv8" path="res://Environment/space_background_2.png" id="3_en127"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+texture = ExtResource("1_67w4a")
+centered = false
+script = ExtResource("2_hui22")
+
+[node name="SpaceBackground2" type="Sprite2D" parent="."]
+position = Vector2(1920, 0)
+texture = ExtResource("3_en127")
+centered = false
+script = ExtResource("2_hui22")
