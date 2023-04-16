@@ -87,10 +87,11 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xwku"]
-size = Vector2(248, 516)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tagd7"]
+size = Vector2(49, 117)
 
 [node name="Robot" type="RigidBody2D"]
+lock_rotation = true
 script = ExtResource("1_234pd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -101,8 +102,8 @@ frame = 9
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.25, 0.25)
-shape = SubResource("RectangleShape2D_5xwku")
+position = Vector2(-0.5, 5.5)
+shape = SubResource("RectangleShape2D_tagd7")
 
 [node name="GroundRaycast" type="RayCast2D" parent="."]
 position = Vector2(0, 21)
