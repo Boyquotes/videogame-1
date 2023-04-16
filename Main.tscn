@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs5eraok6sm2t"]
+[gd_scene load_steps=15 format=3 uid="uid://cs5eraok6sm2t"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_ejjy5"]
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
@@ -8,12 +8,85 @@
 [ext_resource type="PackedScene" uid="uid://bxy7t08qvqen0" path="res://Environment/Acid.tscn" id="6_sgc1r"]
 [ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
 [ext_resource type="PackedScene" uid="uid://dear6dm664d45" path="res://Environment/DoublePlatform.tscn" id="7_bf1yi"]
+[ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="9_3usgo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n22sr"]
 size = Vector2(32, 1029)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc37h"]
 size = Vector2(1920, 32)
+
+[sub_resource type="Animation" id="Animation_shcfn"]
+resource_name = "start_countdown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Info:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ymbvd"]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Info:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Info:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1", "Go!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Info:theme_override_font_sizes/font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [128]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Info:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stue4"]
+_data = {
+"RESET": SubResource("Animation_ymbvd"),
+"start_countdown": SubResource("Animation_shcfn")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ejjy5")
@@ -78,5 +151,39 @@ position = Vector2(16, 509.5)
 shape = SubResource("RectangleShape2D_n22sr")
 
 [node name="Floor" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(960, 1040)
+position = Vector2(960, 1072)
 shape = SubResource("RectangleShape2D_fc37h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Info" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -348.0
+offset_right = -75.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("9_3usgo")
+theme_override_font_sizes/font_size = 128
+text = "Go!"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_stue4")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
