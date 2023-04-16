@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 const VELOCITY: float = 2.0
 

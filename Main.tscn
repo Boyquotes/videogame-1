@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs5eraok6sm2t"]
+[gd_scene load_steps=11 format=3 uid="uid://cs5eraok6sm2t"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_ejjy5"]
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
 [ext_resource type="PackedScene" uid="uid://0src03gjkkql" path="res://Environment/TriplePlatform.tscn" id="5_uf5rt"]
 [ext_resource type="Script" path="res://Environment/Scroll.gd" id="6_2iw8q"]
@@ -8,7 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
 [ext_resource type="PackedScene" uid="uid://dear6dm664d45" path="res://Environment/DoublePlatform.tscn" id="7_bf1yi"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n22sr"]
+size = Vector2(32, 1029)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc37h"]
+size = Vector2(1920, 32)
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ejjy5")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("6_ej2eg")]
 
@@ -20,52 +28,55 @@ position = Vector2(128, 832)
 
 [node name="Acid" parent="." instance=ExtResource("6_sgc1r")]
 
-[node name="TriplePlatform" parent="." instance=ExtResource("5_uf5rt")]
+[node name="Platforms" type="Node2D" parent="."]
+script = ExtResource("6_2iw8q")
+
+[node name="TriplePlatform" parent="Platforms" instance=ExtResource("5_uf5rt")]
 position = Vector2(96, 896)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="TriplePlatform2" parent="." instance=ExtResource("5_uf5rt")]
+[node name="TriplePlatform2" parent="Platforms" instance=ExtResource("5_uf5rt")]
 position = Vector2(960, 928)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="TriplePlatform3" parent="." instance=ExtResource("5_uf5rt")]
+[node name="TriplePlatform3" parent="Platforms" instance=ExtResource("5_uf5rt")]
 position = Vector2(2368, 960)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="SinglePlatform" parent="." instance=ExtResource("6_vngn5")]
+[node name="SinglePlatform" parent="Platforms" instance=ExtResource("6_vngn5")]
 position = Vector2(608, 832)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="SinglePlatform2" parent="." instance=ExtResource("6_vngn5")]
+[node name="SinglePlatform2" parent="Platforms" instance=ExtResource("6_vngn5")]
 position = Vector2(1408, 864)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="SinglePlatform3" parent="." instance=ExtResource("6_vngn5")]
+[node name="SinglePlatform3" parent="Platforms" instance=ExtResource("6_vngn5")]
 position = Vector2(1632, 800)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="SinglePlatform5" parent="." instance=ExtResource("6_vngn5")]
+[node name="SinglePlatform5" parent="Platforms" instance=ExtResource("6_vngn5")]
 position = Vector2(2848, 928)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="SinglePlatform6" parent="." instance=ExtResource("6_vngn5")]
+[node name="SinglePlatform6" parent="Platforms" instance=ExtResource("6_vngn5")]
 position = Vector2(3424, 800)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="DoublePlatform" parent="." instance=ExtResource("7_bf1yi")]
+[node name="DoublePlatform" parent="Platforms" instance=ExtResource("7_bf1yi")]
 position = Vector2(1984, 896)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
 
-[node name="DoublePlatform2" parent="." instance=ExtResource("7_bf1yi")]
+[node name="DoublePlatform2" parent="Platforms" instance=ExtResource("7_bf1yi")]
 position = Vector2(3072, 864)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("6_2iw8q")
+
+[node name="DeathArea" type="Area2D" parent="."]
+
+[node name="Back" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(16, 509.5)
+shape = SubResource("RectangleShape2D_n22sr")
+
+[node name="Floor" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(960, 1040)
+shape = SubResource("RectangleShape2D_fc37h")
