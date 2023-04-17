@@ -13,7 +13,6 @@ func _ready():
 	death_area.body_exited.connect(_on_exited_death_area)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
-	print(timer.time_left)
 
 func _process(delta):
 	pass
@@ -28,7 +27,7 @@ func _on_exited_death_area(body: Node) -> void:
 	finish_game()
 	
 func _on_timer_timeout() -> void:
-	pass
+	start_game()
 
 func set_all_processes(enable: bool) -> void:
 	player.set_process(enable)

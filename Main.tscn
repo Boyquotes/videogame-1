@@ -157,7 +157,6 @@ shape = SubResource("RectangleShape2D_fc37h")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Info" type="Label" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -173,7 +172,7 @@ scale = Vector2(3, 3)
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("9_3usgo")
 theme_override_font_sizes/font_size = 128
-text = "Go!"
+text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
