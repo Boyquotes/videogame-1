@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs5eraok6sm2t"]
+[gd_scene load_steps=18 format=3 uid="uid://cs5eraok6sm2t"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_ejjy5"]
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
 [ext_resource type="PackedScene" uid="uid://dear6dm664d45" path="res://Environment/DoublePlatform.tscn" id="7_bf1yi"]
 [ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="9_3usgo"]
+[ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="10_h7q73"]
+[ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="11_lnfy5"]
+[ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="12_tjefv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n22sr"]
 size = Vector2(32, 1029)
@@ -21,7 +24,7 @@ resource_name = "start_countdown"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info:visible")
+tracks/0/path = NodePath("UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer/Info:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,50 +39,38 @@ length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info:visible")
+tracks/0/path = NodePath("UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer/Info:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["3", "2", "1", "Go!"]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer/Info:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.4, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [256, 256, 128]
+}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Info:theme_override_font_sizes/font_size")
+tracks/2/path = NodePath("UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer/Info:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [128]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Info:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3, 3.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(3, 3.4, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_stue4"]
@@ -98,6 +89,7 @@ anchor_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("1_kblmq")]
 position = Vector2(128, 832)
+collision_layer = 3
 
 [node name="Acid" parent="." instance=ExtResource("6_sgc1r")]
 
@@ -145,6 +137,7 @@ position = Vector2(3072, 864)
 scale = Vector2(0.5, 0.5)
 
 [node name="DeathArea" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="Back" type="CollisionShape2D" parent="DeathArea"]
 position = Vector2(16, 509.5)
@@ -156,27 +149,6 @@ shape = SubResource("RectangleShape2D_fc37h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Info" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -288.0
-offset_top = -348.0
-offset_right = -75.0
-offset_bottom = -188.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("9_3usgo")
-theme_override_font_sizes/font_size = 128
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 libraries = {
@@ -186,3 +158,67 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1088.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Info" type="Label" parent="UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_3usgo")
+theme_override_font_sizes/font_size = 128
+text = "Go!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/PanelContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("9_3usgo")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("10_h7q73")
+theme_override_styles/hover = ExtResource("11_lnfy5")
+theme_override_styles/pressed = ExtResource("12_tjefv")
+text = "Play Again"
