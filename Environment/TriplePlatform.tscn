@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://0src03gjkkql"]
+[gd_scene load_steps=6 format=3 uid="uid://0src03gjkkql"]
 
 [ext_resource type="Texture2D" uid="uid://db5chmeuv8t20" path="res://Environment/Tile (1).png" id="1_1e1vt"]
 [ext_resource type="Texture2D" uid="uid://cae0d38qm2y7o" path="res://Environment/Tile (2).png" id="2_451ej"]
 [ext_resource type="Texture2D" uid="uid://dtk4k7jldsp4g" path="res://Environment/Tile (3).png" id="3_u17ob"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pj6ea"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnrly"]
+size = Vector2(832, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wrps"]
 size = Vector2(768, 256)
 
 [node name="TriplePlatform" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 0
 
 [node name="LeftPlatform" type="Sprite2D" parent="."]
 position = Vector2(128, 128)
@@ -23,4 +28,12 @@ texture = ExtResource("3_u17ob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(384, 128)
-shape = SubResource("RectangleShape2D_pj6ea")
+shape = SubResource("RectangleShape2D_nnrly")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(384, 128)
+shape = SubResource("RectangleShape2D_5wrps")

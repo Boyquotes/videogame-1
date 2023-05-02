@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cs5eraok6sm2t"]
+[gd_scene load_steps=19 format=3 uid="uid://dk28sq5h763kb"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_ejjy5"]
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
 [ext_resource type="PackedScene" uid="uid://0src03gjkkql" path="res://Environment/TriplePlatform.tscn" id="5_uf5rt"]
-[ext_resource type="Script" path="res://Environment/Scroll.gd" id="6_2iw8q"]
+[ext_resource type="Script" path="res://Environment/Platforms.gd" id="5_wf782"]
 [ext_resource type="PackedScene" uid="uid://baa32sms6661" path="res://Environment/ScrollingSpaceBackground.tscn" id="6_ej2eg"]
 [ext_resource type="PackedScene" uid="uid://bxy7t08qvqen0" path="res://Environment/Acid.tscn" id="6_sgc1r"]
 [ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
@@ -13,8 +13,11 @@
 [ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="11_lnfy5"]
 [ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="12_tjefv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tlr8"]
+size = Vector2(32, 1024)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n22sr"]
-size = Vector2(32, 1029)
+size = Vector2(32, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc37h"]
 size = Vector2(1920, 32)
@@ -81,6 +84,7 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ejjy5")
+metadata/_edit_vertical_guides_ = [896.0, 544.0]
 
 [node name="SpaceBackground" parent="." instance=ExtResource("6_ej2eg")]
 
@@ -88,59 +92,49 @@ script = ExtResource("1_ejjy5")
 anchor_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("1_kblmq")]
-position = Vector2(128, 832)
+position = Vector2(256, 832)
 collision_layer = 3
 
 [node name="Acid" parent="." instance=ExtResource("6_sgc1r")]
 
 [node name="Platforms" type="Node2D" parent="."]
-script = ExtResource("6_2iw8q")
-
-[node name="TriplePlatform" parent="Platforms" instance=ExtResource("5_uf5rt")]
-position = Vector2(96, 896)
-scale = Vector2(0.5, 0.5)
+script = ExtResource("5_wf782")
 
 [node name="TriplePlatform2" parent="Platforms" instance=ExtResource("5_uf5rt")]
-position = Vector2(960, 928)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1984, 832)
 
-[node name="TriplePlatform3" parent="Platforms" instance=ExtResource("5_uf5rt")]
-position = Vector2(2368, 960)
-scale = Vector2(0.5, 0.5)
+[node name="TriplePlatform" parent="Platforms" instance=ExtResource("5_uf5rt")]
+position = Vector2(64, 896)
 
 [node name="SinglePlatform" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(608, 832)
-scale = Vector2(0.5, 0.5)
+position = Vector2(576, 896)
 
 [node name="SinglePlatform2" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(1408, 864)
-scale = Vector2(0.5, 0.5)
+position = Vector2(832, 896)
 
 [node name="SinglePlatform3" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(1632, 800)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1120, 896)
 
 [node name="SinglePlatform5" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(2848, 928)
-scale = Vector2(0.5, 0.5)
-
-[node name="SinglePlatform6" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(3424, 800)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1376, 896)
 
 [node name="DoublePlatform" parent="Platforms" instance=ExtResource("7_bf1yi")]
-position = Vector2(1984, 896)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1600, 896)
 
-[node name="DoublePlatform2" parent="Platforms" instance=ExtResource("7_bf1yi")]
-position = Vector2(3072, 864)
-scale = Vector2(0.5, 0.5)
+[node name="BorderRightScreenArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="RightSide" type="CollisionShape2D" parent="BorderRightScreenArea"]
+position = Vector2(1904, 512)
+shape = SubResource("RectangleShape2D_3tlr8")
 
 [node name="DeathArea" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
 [node name="Back" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(16, 509.5)
+position = Vector2(16, 512)
 shape = SubResource("RectangleShape2D_n22sr")
 
 [node name="Floor" type="CollisionShape2D" parent="DeathArea"]
@@ -160,6 +154,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

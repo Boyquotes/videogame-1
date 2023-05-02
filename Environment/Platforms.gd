@@ -1,10 +1,12 @@
 extends Node2D
 
+
 const VELOCITY: float = 2.0
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 func _process(delta):
 	position.x -= VELOCITY
+	

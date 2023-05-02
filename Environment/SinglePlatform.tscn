@@ -2,15 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://bseuryi0bsghd" path="res://Environment/Tile (15).png" id="1_evtq5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tghq7"]
-size = Vector2(256, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr3br"]
+size = Vector2(320, 128)
 
 [node name="SinglePlatform" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(128, 128)
 texture = ExtResource("1_evtq5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 position = Vector2(128, 64)
-shape = SubResource("RectangleShape2D_tghq7")
+shape = SubResource("RectangleShape2D_yr3br")
