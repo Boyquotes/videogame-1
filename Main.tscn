@@ -107,7 +107,7 @@ position = Vector2(1984, 832)
 position = Vector2(64, 896)
 
 [node name="SinglePlatform" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(576, 896)
+position = Vector2(576, 864)
 
 [node name="SinglePlatform2" parent="Platforms" instance=ExtResource("6_vngn5")]
 position = Vector2(832, 896)
@@ -154,7 +154,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
