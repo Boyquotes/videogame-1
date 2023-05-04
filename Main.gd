@@ -11,6 +11,12 @@ extends Node2D
 @onready var timer := $Timer
 @onready var retry_btn := $UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer2/Button
 
+const GRID_SIZE := 32
+const MAX_PLATFORM_Y_POS := 256
+const MIN_PLATFORM_Y_POS := 928
+const MIN_PLATFORM_X_OFFSET := 96
+const MAX_PLATFORM_X_OFFSET := 192
+
 
 var platform_scenes := [
 	preload("res://Environment/SinglePlatform.tscn"),
@@ -50,10 +56,12 @@ func _on_exited_death_area(body: Node) -> void:
 
 func _on_platform_entered_screen_area(body: Node) -> void:
 	var last_platform = body.get_parent()
-	var last_platform_size = last_platform.get_node("CollisionShape2D").shape.get_size()
-	var last_platform_width = (last_platform_size.x - 64) / 2
-	var new_platform = platform_scenes[randi()%3].instantiate()
-	new_platform.position = last_platform.get_position() + Vector2(last_platform_width + 100, 0)
+	var last_platform_position = last_platform.get_position()
+	var last_platform_width = _get_platform_width(last_platform)
+	var new_platform = platform_scenes[randi() % 3].instantiate() # We only have 3 different platforms
+	var new_platform_distance = (randi_range(3, 6) * GRID_SIZE)
+	var new_platform_x_offset = last_platform_position.x + last_platform_width + new_platform_distance
+	new_platform.position = Vector2(new_platform_x_offset, last_platform_position.y)
 	platforms.call_deferred("add_child", new_platform)
 
 
@@ -71,3 +79,10 @@ func set_all_processes(enable: bool) -> void:
 	background.set_process(enable)
 	background2.set_process(enable)
 	set_process(enable)
+
+
+func _get_platform_width(platform: Node) -> int:
+	# We are using the collision shape to get the size and not the sprite because we have some platforms composed by more than one sprite.
+	var platform_collision_shape_size = platform.get_node("CollisionShape2D").shape.get_size()
+	# The collision shape is 64px wider than the sprite. Also everything is scaled down 0.5
+	return (platform_collision_shape_size.x - 64) / 2
