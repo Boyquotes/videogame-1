@@ -7,7 +7,6 @@ A continuación se muestra una prueba de concepto muy básica. De momento son po
 
 Se ha generado una versión jugable de esta POC (HatchingTheBeastPOC.exe) que se encuentra ubicado en este mismo repositorio, en la raíz del directorio. El único control necesario para jugar es el salto, que está mapeado en la tecla "J".
 
-https://user-images.githubusercontent.com/16454493/232359668-3cd1e1a3-e3d2-4ba4-a768-01e5fea9449e.mov
-
+https://user-images.githubusercontent.com/16454493/236536452-87f753a6-ce63-485b-8478-3a06c1e76500.mov
 
 
