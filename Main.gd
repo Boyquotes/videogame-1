@@ -11,6 +11,7 @@ extends Node2D
 @onready var timer := $Timer
 @onready var retry_btn := $UI/PanelContainer/BoxContainer/VBoxContainer/HBoxContainer2/Button
 
+var DISPLAY_WIDTH := 1920
 const GRID_SIZE := 32
 const MIN_PLATFORM_Y_POS := 256
 const MAX_PLATFORM_Y_POS := 928
@@ -27,6 +28,7 @@ var platform_scenes := [
 
 func _ready():
 	set_all_processes(false)
+	_initialize_environment()
 	death_area.body_exited.connect(_on_exited_death_area)
 	border_right_screen_area.area_entered.connect(_on_platform_entered_screen_area)
 	timer.timeout.connect(_on_timer_timeout)
@@ -56,6 +58,10 @@ func _on_exited_death_area(body: Node) -> void:
 
 func _on_platform_entered_screen_area(body: Node) -> void:
 	var last_platform = body.get_parent()
+	_generate_new_platform(last_platform)
+
+
+func _generate_new_platform(last_platform: Node) -> Node:
 	var last_platform_position = last_platform.get_position()
 	var last_platform_width = _get_platform_width(last_platform)
 	var new_platform = platform_scenes[randi() % 3].instantiate() # We only have 3 different platforms
@@ -65,6 +71,8 @@ func _on_platform_entered_screen_area(body: Node) -> void:
 	var new_platform_y_offset = _generate_new_platform_y_offset(last_platform_position.y, new_platform_x_distance_grid_units) # The y offset will depend on the x offset
 	new_platform.position = Vector2(new_platform_x_offset, new_platform_y_offset)
 	platforms.call_deferred("add_child", new_platform)
+	return new_platform
+
 
 func _generate_new_platform_y_offset(last_platform_y_position, new_platform_x_distance_grid_units: int) -> int:
 	var should_generate_platform_above: bool
@@ -80,8 +88,8 @@ func _generate_new_platform_y_offset(last_platform_y_position, new_platform_x_di
 	if new_platform_x_distance_grid_units <= 5:
 		return randi_range(-2, 0) * GRID_SIZE + last_platform_y_position
 		
-#	if new_platform_x_distance_grid_units == 6:
-#		return randi_range(-1, 0) * GRID_SIZE + last_platform_y_position
+	if new_platform_x_distance_grid_units == 6:
+		return randi_range(-1, 0) * GRID_SIZE + last_platform_y_position
 		
 	return last_platform_y_position
 
@@ -106,3 +114,20 @@ func _get_platform_width(platform: Node) -> int:
 	var platform_collision_shape_size = platform.get_node("CollisionShape2D").shape.get_size()
 	# The collision shape is 64px wider than the sprite. Also everything is scaled down 0.5
 	return (platform_collision_shape_size.x - 64) / 2
+
+func _initialize_environment() -> void:
+	_generate_initial_platforms()
+
+	
+func _generate_initial_platforms() -> void:
+	var new_platform = platform_scenes[randi() % 3].instantiate()
+	new_platform.position = Vector2(randi_range(3, 6) * GRID_SIZE, randi_range(8, 29) * GRID_SIZE)
+	platforms.call_deferred("add_child", new_platform)
+	_position_player(new_platform) # This logic should be extracted
+	while new_platform.position.x + _get_platform_width(new_platform) <= DISPLAY_WIDTH:
+		new_platform = _generate_new_platform(new_platform)
+
+
+func _position_player(platform: Node) -> void:
+	var platform_width = _get_platform_width(platform)
+	player.position = Vector2(platform.position.x + (platform_width / 2), platform.position.y - player.get_node("CollisionShape2D").shape.get_size().y)

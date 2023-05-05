@@ -1,13 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dk28sq5h763kb"]
+[gd_scene load_steps=16 format=3 uid="uid://dk28sq5h763kb"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_ejjy5"]
 [ext_resource type="PackedScene" uid="uid://cvqvmp7827aft" path="res://Player/Player.tscn" id="1_kblmq"]
-[ext_resource type="PackedScene" uid="uid://0src03gjkkql" path="res://Environment/TriplePlatform.tscn" id="5_uf5rt"]
 [ext_resource type="Script" path="res://Environment/Platforms.gd" id="5_wf782"]
 [ext_resource type="PackedScene" uid="uid://baa32sms6661" path="res://Environment/ScrollingSpaceBackground.tscn" id="6_ej2eg"]
 [ext_resource type="PackedScene" uid="uid://bxy7t08qvqen0" path="res://Environment/Acid.tscn" id="6_sgc1r"]
-[ext_resource type="PackedScene" uid="uid://50ksv2r77j5o" path="res://Environment/SinglePlatform.tscn" id="6_vngn5"]
-[ext_resource type="PackedScene" uid="uid://dear6dm664d45" path="res://Environment/DoublePlatform.tscn" id="7_bf1yi"]
 [ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="9_3usgo"]
 [ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="10_h7q73"]
 [ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="11_lnfy5"]
@@ -99,27 +96,6 @@ collision_layer = 3
 
 [node name="Platforms" type="Node2D" parent="."]
 script = ExtResource("5_wf782")
-
-[node name="TriplePlatform2" parent="Platforms" instance=ExtResource("5_uf5rt")]
-position = Vector2(1984, 832)
-
-[node name="TriplePlatform" parent="Platforms" instance=ExtResource("5_uf5rt")]
-position = Vector2(64, 896)
-
-[node name="SinglePlatform" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(576, 864)
-
-[node name="SinglePlatform2" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(832, 896)
-
-[node name="SinglePlatform3" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(1120, 896)
-
-[node name="SinglePlatform5" parent="Platforms" instance=ExtResource("6_vngn5")]
-position = Vector2(1376, 896)
-
-[node name="DoublePlatform" parent="Platforms" instance=ExtResource("7_bf1yi")]
-position = Vector2(1600, 896)
 
 [node name="BorderRightScreenArea" type="Area2D" parent="."]
 collision_layer = 0
