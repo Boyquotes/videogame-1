@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsh5nqawob6g0"]
+
+[ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="1_mia0q"]
+[ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="2_l4fr5"]
+[ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="3_3llct"]
+[ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="4_rt05n"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1088.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Info" type="Label" parent="PanelContainer/BoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mia0q")
+theme_override_font_sizes/font_size = 128
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/BoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("1_mia0q")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("2_l4fr5")
+theme_override_styles/hover = ExtResource("3_3llct")
+theme_override_styles/pressed = ExtResource("4_rt05n")
+text = "Play Again"

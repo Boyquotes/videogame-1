@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://clcxnnbhb32kc"]
+
+[ext_resource type="Script" path="res://OptionsMenu.gd" id="1_dowo4"]
+[ext_resource type="Texture2D" uid="uid://c076uxerpe6q0" path="res://Environment/space_background.png" id="2_1ybok"]
+[ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="3_7xw7x"]
+[ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="4_48e7a"]
+[ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="5_xfttk"]
+[ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="6_fkkx2"]
+[ext_resource type="StyleBox" uid="uid://kphopn53gm57" path="res://UI/Buttons/ui_button.tres" id="7_3xq3k"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dowo4")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ybok")
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TopPadding" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 100
+
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/MainContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/MainContainer/Content/TitleContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7xw7x")
+theme_override_font_sizes/font_size = 92
+text = "Options"
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 48
+
+[node name="Controls" type="Button" parent="MarginContainer/MainContainer/Content/ButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("3_7xw7x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("4_48e7a")
+theme_override_styles/hover = ExtResource("5_xfttk")
+theme_override_styles/pressed = ExtResource("6_fkkx2")
+theme_override_styles/focus = ExtResource("4_48e7a")
+text = "Controls"
+
+[node name="Video" type="Button" parent="MarginContainer/MainContainer/Content/ButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("3_7xw7x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("4_48e7a")
+theme_override_styles/hover = ExtResource("5_xfttk")
+theme_override_styles/pressed = ExtResource("6_fkkx2")
+theme_override_styles/focus = ExtResource("4_48e7a")
+text = "Video"
+
+[node name="Sound" type="Button" parent="MarginContainer/MainContainer/Content/ButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("3_7xw7x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("4_48e7a")
+theme_override_styles/hover = ExtResource("5_xfttk")
+theme_override_styles/pressed = ExtResource("6_fkkx2")
+theme_override_styles/focus = ExtResource("4_48e7a")
+text = "Sound"
+
+[node name="Back" type="Button" parent="MarginContainer/MainContainer/Content/ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("3_7xw7x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("7_3xq3k")
+theme_override_styles/hover = ExtResource("5_xfttk")
+theme_override_styles/pressed = ExtResource("6_fkkx2")
+theme_override_styles/focus = ExtResource("4_48e7a")
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/MainContainer/Content/ButtonsContainer/Back" to="." method="_on_back_pressed"]
