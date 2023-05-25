@@ -1,24 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn5717ljnik4i"]
+[gd_scene load_steps=7 format=3 uid="uid://ctiglyrp8lilc"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_jgbor"]
-[ext_resource type="Texture2D" uid="uid://c076uxerpe6q0" path="res://Environment/space_background.png" id="2_aotj0"]
-[ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="2_lhjl2"]
-[ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="2_x07pd"]
-[ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="3_w6qq4"]
-[ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="4_wno4s"]
-[ext_resource type="StyleBox" uid="uid://kphopn53gm57" path="res://UI/Buttons/ui_button.tres" id="6_t4l07"]
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_rc4ts"]
+[ext_resource type="Texture2D" uid="uid://c076uxerpe6q0" path="res://Environment/space_background.png" id="2_4oa06"]
+[ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="3_387wt"]
+[ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="4_y8r2b"]
+[ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="5_ccptm"]
+[ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="6_o0pes"]
 
-[node name="Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_jgbor")
+script = ExtResource("1_rc4ts")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_aotj0")
+texture = ExtResource("2_4oa06")
 centered = false
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -46,9 +45,9 @@ theme_override_constants/separation = 100
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="MarginContainer/MainContainer/Content/TitleContainer"]
+[node name="Header" type="Label" parent="MarginContainer/MainContainer/Content/TitleContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_lhjl2")
+theme_override_fonts/font = ExtResource("3_387wt")
 theme_override_font_sizes/font_size = 92
 text = "Hatching the beast"
 
@@ -63,12 +62,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
-theme_override_fonts/font = ExtResource("2_lhjl2")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = ExtResource("2_x07pd")
-theme_override_styles/hover = ExtResource("3_w6qq4")
-theme_override_styles/pressed = ExtResource("4_wno4s")
-theme_override_styles/focus = ExtResource("2_x07pd")
+theme_override_fonts/font = ExtResource("3_387wt")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_y8r2b")
+theme_override_styles/hover = ExtResource("5_ccptm")
+theme_override_styles/pressed = ExtResource("6_o0pes")
+theme_override_styles/focus = ExtResource("4_y8r2b")
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/MainContainer/Content/ButtonsContainer"]
@@ -76,12 +75,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
-theme_override_fonts/font = ExtResource("2_lhjl2")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = ExtResource("2_x07pd")
-theme_override_styles/hover = ExtResource("3_w6qq4")
-theme_override_styles/pressed = ExtResource("4_wno4s")
-theme_override_styles/focus = ExtResource("2_x07pd")
+theme_override_fonts/font = ExtResource("3_387wt")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_y8r2b")
+theme_override_styles/hover = ExtResource("5_ccptm")
+theme_override_styles/pressed = ExtResource("6_o0pes")
+theme_override_styles/focus = ExtResource("4_y8r2b")
 text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/MainContainer/Content/ButtonsContainer"]
@@ -90,12 +89,12 @@ size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
-theme_override_fonts/font = ExtResource("2_lhjl2")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = ExtResource("6_t4l07")
-theme_override_styles/hover = ExtResource("3_w6qq4")
-theme_override_styles/pressed = ExtResource("4_wno4s")
-theme_override_styles/focus = ExtResource("2_x07pd")
+theme_override_fonts/font = ExtResource("3_387wt")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_y8r2b")
+theme_override_styles/hover = ExtResource("5_ccptm")
+theme_override_styles/pressed = ExtResource("6_o0pes")
+theme_override_styles/focus = ExtResource("4_y8r2b")
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/MainContainer/Content/ButtonsContainer/Play" to="." method="_on_play_pressed"]

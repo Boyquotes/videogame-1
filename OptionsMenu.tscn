@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clcxnnbhb32kc"]
+[gd_scene load_steps=7 format=3 uid="uid://clcxnnbhb32kc"]
 
 [ext_resource type="Script" path="res://OptionsMenu.gd" id="1_dowo4"]
 [ext_resource type="Texture2D" uid="uid://c076uxerpe6q0" path="res://Environment/space_background.png" id="2_1ybok"]
@@ -6,7 +6,6 @@
 [ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="4_48e7a"]
 [ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="5_xfttk"]
 [ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="6_fkkx2"]
-[ext_resource type="StyleBox" uid="uid://kphopn53gm57" path="res://UI/Buttons/ui_button.tres" id="7_3xq3k"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -64,7 +63,7 @@ theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_fonts/font = ExtResource("3_7xw7x")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("4_48e7a")
 theme_override_styles/hover = ExtResource("5_xfttk")
 theme_override_styles/pressed = ExtResource("6_fkkx2")
@@ -77,7 +76,7 @@ theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_fonts/font = ExtResource("3_7xw7x")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("4_48e7a")
 theme_override_styles/hover = ExtResource("5_xfttk")
 theme_override_styles/pressed = ExtResource("6_fkkx2")
@@ -90,7 +89,7 @@ theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_fonts/font = ExtResource("3_7xw7x")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("4_48e7a")
 theme_override_styles/hover = ExtResource("5_xfttk")
 theme_override_styles/pressed = ExtResource("6_fkkx2")
@@ -104,8 +103,8 @@ theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
 theme_override_fonts/font = ExtResource("3_7xw7x")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = ExtResource("7_3xq3k")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_48e7a")
 theme_override_styles/hover = ExtResource("5_xfttk")
 theme_override_styles/pressed = ExtResource("6_fkkx2")
 theme_override_styles/focus = ExtResource("4_48e7a")

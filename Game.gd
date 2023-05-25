@@ -45,7 +45,7 @@ func start_game() -> void:
 
 
 func finish_game() -> void:
-	ui_info.text = "Game Over"
+	ui_info.text = "Game over"
 	ui.show()
 	buttons.show()
 	set_all_processes(false)
@@ -131,7 +131,7 @@ func _position_player(platform: Node) -> void:
 
 
 func _on_back_to_menu_pressed():
-	get_tree().change_scene_to_file("res://Menu.tscn")
+	get_tree().change_scene_to_file("res://MainMenu.tscn")
 
 
 func _on_retry_pressed():

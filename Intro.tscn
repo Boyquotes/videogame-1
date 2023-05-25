@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://byvywjee0lofs"]
+
+[ext_resource type="Script" path="res://Intro.gd" id="1_0ggk2"]
+[ext_resource type="Texture2D" uid="uid://l3dl64wcegv8" path="res://Environment/space_background_2.png" id="1_68edo"]
+[ext_resource type="FontFile" uid="uid://c3lxv6oo3pwoc" path="res://UI/Fonts/Montserrat-Bold.ttf" id="2_o17a2"]
+[ext_resource type="StyleBox" uid="uid://2nq20mti46kp" path="res://UI/Buttons/ui_button_normal.tres" id="3_3klfc"]
+[ext_resource type="StyleBox" uid="uid://camvrosjal57l" path="res://UI/Buttons/ui_button _hover.tres" id="4_ujdyp"]
+[ext_resource type="StyleBox" uid="uid://badyjckl0f261" path="res://UI/Buttons/ui_button_pressed.tres" id="5_kkb88"]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_0ggk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_68edo")
+centered = false
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnContainer" type="MarginContainer" parent="UI"]
+clip_contents = true
+layout_mode = 0
+offset_top = 3.0
+offset_right = 1925.0
+offset_bottom = 1076.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/BtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 92
+
+[node name="title" type="Label" parent="UI/BtnContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_o17a2")
+theme_override_font_sizes/font_size = 92
+text = "Hatching the beast"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/BtnContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UI/BtnContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92549, 0, 0.968627, 1)
+theme_override_fonts/font = ExtResource("2_o17a2")
+theme_override_font_sizes/font_size = 48
+text = "This first screen will display an intro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="paragraph 1" type="Label" parent="UI/BtnContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o17a2")
+theme_override_font_sizes/font_size = 36
+text = "Tell the game story to the player through an animation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="paragraph 2" type="Label" parent="UI/BtnContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o17a2")
+theme_override_font_sizes/font_size = 36
+text = "The animation will consist on images, subtitles and a music background."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="paragraph 3" type="Label" parent="UI/BtnContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o17a2")
+theme_override_font_sizes/font_size = 36
+text = "The skip button will only appear if the player has already a saved game."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipBtn" type="Button" parent="UI/BtnContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.815686, 0.996078, 0.356863, 1)
+theme_override_fonts/font = ExtResource("2_o17a2")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("3_3klfc")
+theme_override_styles/hover = ExtResource("4_ujdyp")
+theme_override_styles/pressed = ExtResource("5_kkb88")
+theme_override_styles/focus = ExtResource("3_3klfc")
+text = "Skip"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="UI/BtnContainer/VBoxContainer/SkipBtn" to="." method="_on_skip_btn_pressed"]
