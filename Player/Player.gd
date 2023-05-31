@@ -24,5 +24,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("jump") and is_grounded:
 		apply_impulse(Vector2(0, -400))
 		
+func stop_animation():
+	_animated_sprite.stop()
+		
 
 

@@ -8,8 +8,14 @@ extends Node2D
 @onready var border_right_screen_area: Area2D = $BorderRightScreenArea
 @onready var ui := $UI
 @onready var ui_info := $UI/PanelContainer/MainContainer/Info
-@onready var buttons := $UI/PanelContainer/MainContainer/Buttons
+@onready var ui_win_message_label := $UI/PanelContainer/MainContainer/WinLabel
+@onready var gameover_buttons := $UI/PanelContainer/MainContainer/Buttons
+@onready var hatch_egg_ui := $HatchEggUI
+@onready var hatch_egg_btn := $HatchEggUI/HatchBtnContainer/HatchEggBtn
 @onready var timer := $Timer
+@onready var camera := $Player/Camera2D
+@onready var hatching_timer := $HatchingTimer
+@onready var hatching_time_left_label := $HatchEggUI/TimeLeftContainer/TimeLeftLabel
 
 var DISPLAY_WIDTH := 1920
 const GRID_SIZE := 32
@@ -36,23 +42,32 @@ func _ready():
 
 
 func _process(_delta):
-	pass
+	if !hatching_timer.is_stopped():
+		hatching_time_left_label.text = str(snapped(hatching_timer.time_left, 0.1))
 
 
 func start_game() -> void:
 	ui.hide()
+	hatch_egg_ui.show()
 	set_all_processes(true)
 
 
-func finish_game() -> void:
-	ui_info.text = "Game over"
+func finish_game(has_won: bool) -> void:
+	hatch_egg_ui.hide()
+	hatching_timer.stop()
 	ui.show()
-	buttons.show()
+	player.stop_animation()
+	gameover_buttons.show()
+	if has_won:
+		ui_win_message_label.show()
+		ui_info.hide()
+	else:
+		ui_info.text = "Game over"
 	set_all_processes(false)
 
 
 func _on_exited_death_area(body: Node) -> void:
-	finish_game()
+	finish_game(false)
 
 
 func _on_platform_entered_screen_area(body: Node) -> void:
@@ -136,3 +151,15 @@ func _on_back_to_menu_pressed():
 
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_hatch_egg_btn_pressed():
+	hatching_timer.start()
+	hatch_egg_btn.disabled = true
+	hatch_egg_btn.text = "Hatching..." 
+	
+
+
+
+func _on_hatching_timer_timeout():
+	finish_game(true)

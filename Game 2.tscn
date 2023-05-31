@@ -79,11 +79,16 @@ _data = {
 "start_countdown": SubResource("Animation_shcfn")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiexd"]
-content_margin_left = 20.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 20.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt6m6"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+draw_center = false
+expand_margin_left = 16.0
+expand_margin_top = 8.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_63bef")
@@ -162,16 +167,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 72
-
-[node name="WinLabel" type="Label" parent="UI/PanelContainer/MainContainer"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_w68hv")
-theme_override_font_sizes/font_size = 96
-text = "Congratulations!
-You've hatched a new Beast"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Info" type="Label" parent="UI/PanelContainer/MainContainer"]
 layout_mode = 2
@@ -260,7 +255,7 @@ offset_bottom = 770.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_w68hv")
 theme_override_font_sizes/font_size = 72
-theme_override_styles/normal = SubResource("StyleBoxEmpty_oiexd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xt6m6")
 text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1

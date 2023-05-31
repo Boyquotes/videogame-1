@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cvqvmp7827aft"]
+[gd_scene load_steps=33 format=3 uid="uid://cvqvmp7827aft"]
 
 [ext_resource type="Texture2D" uid="uid://dsaq7gm3crowe" path="res://Player/sprites/run/Run (1).png" id="1_3dc2g"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_234pd"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://klgiksen73ma" path="res://Player/sprites/idle/Idle (9).png" id="10_qtmd0"]
 [ext_resource type="Texture2D" uid="uid://dpyjm3wrnptcj" path="res://Player/sprites/jump/Jump (10).png" id="10_si66l"]
 [ext_resource type="Texture2D" uid="uid://qmtaryy87xca" path="res://Player/sprites/idle/Idle (10).png" id="11_gqr7m"]
+[ext_resource type="Texture2D" uid="uid://dhcrmkuxlt1io" path="res://Purple.png" id="30_2e4h0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uh5bm"]
 animations = [{
@@ -139,14 +140,21 @@ size = Vector2(49, 117)
 lock_rotation = true
 script = ExtResource("1_234pd")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-30, -11)
+scale = Vector2(0.955769, 0.955769)
+texture = ExtResource("30_2e4h0")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_uh5bm")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, 5.5)
 shape = SubResource("RectangleShape2D_tagd7")
 
 [node name="GroundRaycast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-16, 21)
